@@ -12,11 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class AlbumController {
 	
 	@Autowired
-	private final AlbumService albumService;
-	
-	public AlbumController(AlbumService albumService) {
-		this.albumService = albumService;
-	}
+	AlbumService albumService;
 
 	@GetMapping
 	public List<Album> getAlbums() {

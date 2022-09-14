@@ -2,12 +2,14 @@ package com.musicduders.api.album;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class AlbumService {
 	
-	private final AlbumRepository albumRepository;
+	@Autowired
+	AlbumRepository albumRepository;
 	
 	public AlbumService(AlbumRepository albumRepository) {
 		this.albumRepository = albumRepository;
