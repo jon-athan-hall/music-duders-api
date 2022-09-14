@@ -4,7 +4,8 @@ public class Album {
 	
 	private int id;
 	private String title;
-	
+	private String url;
+
 	public int getId() {
 		return id;
 	}
@@ -19,6 +20,14 @@ public class Album {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 }
