@@ -22,9 +22,19 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		
-		<dependency> <!-- Java database connectivity -->
+		<dependency><!-- Java Database Connectivity -->
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+		
+		<dependency><!-- Java Persistence API -->
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		
+		<dependency><!-- MySQL connector -->
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
 
 		<dependency>
