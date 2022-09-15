@@ -1,26 +1,30 @@
 package com.musicduders.api.album;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.musicduders.api.artist.Artist;
-import com.musicduders.api.artist.ArtistRepository;
+import com.musicduders.api.artist.ArtistService;
 
 @RestController
 @RequestMapping("/api/v1/albums")
 public class AlbumController {
 	
 	@Autowired
-	AlbumService albumService;
+	private AlbumService albumService;
 	
 	@Autowired
-	ArtistRepository artistRepository;
+	private ArtistService artistService;
+	
+	@Autowired
+	private AlbumMapper albumMapper;
 
 	@GetMapping
 	public List<Album> getAlbums() {
@@ -28,9 +32,15 @@ public class AlbumController {
 		return albums;
 	}
 	
+	@GetMapping("/{id}")
+	public AlbumResponse getAlbum(@PathVariable String id) {
+		Optional<Album> album = albumService.getAlbum(id);
+		return albumMapper.toResponse(album.get());
+	}
+	
 	@PostMapping
-	public void postAlbum(@RequestBody Album album) {
-		albumService.createAlbum(album);
+	public void postAlbum(@RequestBody AlbumRequest albumRequest) {
+		artistService.createAlbum(albumRequest);
 	}
 	
 }

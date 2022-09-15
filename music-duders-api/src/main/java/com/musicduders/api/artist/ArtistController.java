@@ -20,30 +20,33 @@ public class ArtistController {
 	@Autowired
 	ArtistService artistService;
 	
+	@Autowired
+	ArtistMapper artistMapper;
+	
 	@GetMapping
-	public List<Artist> getArtists() {
+	public List<ArtistResponse> getArtists() {
 		List<Artist> artists = artistService.getAllArtists();
-		return artists;
+		return artistMapper.toResponse(artists);
 	}
 	
 	@GetMapping("/{id}")
-	public Optional<Artist> getArtist(@PathVariable Long id) {
+	public ArtistResponse getArtist(@PathVariable String id) {
 		Optional<Artist> artist = artistService.getArtist(id);
-		return artist;
+		return artistMapper.toResponse(artist.get());
 	}
 	
 	@PostMapping
-	public void postArtist(@RequestBody Artist artist) {
+	public void postArtist(@RequestBody ArtistRequest artist) {
 		artistService.createArtist(artist);
 	}
 	
 	@PutMapping("/{id}")
-	public void putArtist(@PathVariable Long id, @RequestBody Artist artist) {
+	public void putArtist(@PathVariable String id, @RequestBody Artist artist) {
 		artistService.updateArtist(id, artist);
 	}
 	
 	@DeleteMapping("/{id}")
-	public void deleteArtist(@PathVariable Long id) {
+	public void deleteArtist(@PathVariable String id) {
 		artistService.deleteArtist(id);
 	}
 

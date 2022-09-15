@@ -1,11 +1,13 @@
 package com.musicduders.api.artist;
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-public interface ArtistRepository extends JpaRepository<Artist, Long> {
+public interface ArtistRepository extends JpaRepository<Artist, String> {
 	
 	@Query("SELECT a from Artist a WHERE a.name = ?1")
-	Artist findArtistByName(String name);
+	Optional<Artist> findArtistByName(String name);
 
 }
