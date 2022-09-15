@@ -1,6 +1,7 @@
 package com.musicduders.api.artist;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -20,20 +21,20 @@ import com.musicduders.api.album.Album;
 public class Artist {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
+	@Column(length = 36)
+	private String id = UUID.randomUUID().toString();
 	
-	@Column(nullable=false, unique=true)
+	@Column(nullable = false, unique = true)
 	private String name;
 	
-	@OneToMany(mappedBy="artist", cascade=CascadeType.ALL)
+	@OneToMany(mappedBy = "artist", cascade = CascadeType.ALL)
 	private List<Album> albums;
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

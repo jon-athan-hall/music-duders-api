@@ -12,10 +12,10 @@ import com.musicduders.api.artist.ArtistRepository;
 public class AlbumService {
 	
 	@Autowired
-	AlbumRepository albumRepository;
+	private AlbumRepository albumRepository;
 	
 	@Autowired
-	ArtistRepository artistRepository;
+	private ArtistRepository artistRepository;
 	
 	public List<Album> getAllAlbums() {
 		List<Album> albums = albumRepository.findAll();

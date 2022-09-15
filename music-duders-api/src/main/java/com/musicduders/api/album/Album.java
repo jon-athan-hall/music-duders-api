@@ -1,5 +1,7 @@
 package com.musicduders.api.album;
 
+import java.util.UUID;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -17,24 +19,24 @@ import com.musicduders.api.artist.Artist;
 public class Album {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
+	@Column(length = 36)
+	private String id = UUID.randomUUID().toString();
 	
-	@Column(nullable=false, unique=false)
+	@Column(nullable = false, unique = false)
 	private String title;
 	
-	@Column(nullable=false, unique=false)
+	@Column(nullable = false, unique = false)
 	private String url;
 	
-	@ManyToOne(optional=false, fetch=FetchType.LAZY)
-	@JoinColumn(name="artist_id", nullable=false)
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "artist_id", nullable = false)
 	private Artist artist;
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
