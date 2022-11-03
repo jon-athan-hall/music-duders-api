@@ -33,6 +33,7 @@ public class ArtistMapper {
 		
 		artistResponse.setId(artist.getId());
 		artistResponse.setName(artist.getName());
+		artistResponse.setAlbums(artist.getAlbums());
 		
 		return artistResponse;
 	}

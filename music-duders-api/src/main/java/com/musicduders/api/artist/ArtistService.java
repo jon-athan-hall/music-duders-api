@@ -69,4 +69,24 @@ public class ArtistService {
 		albumRepository.save(album);
 	}
 	
+	public void updateAlbum(String id, AlbumRequest albumRequest) {
+		Artist artist = new Artist();
+		Album album = albumMapper.toAlbum(albumRequest);
+		
+		Optional<Artist> optionalArtist = artistRepository.findArtistByName(albumRequest.getArtistName());
+		Optional<Album> optionalAlbum = albumRepository.findById(id);
+		
+		if (optionalArtist.isPresent()) {
+			artist = optionalArtist.get();
+		} else {
+			artist.setName(albumRequest.getArtistName());
+		}
+		
+		album.setArtist(artist);
+		album.setId(optionalAlbum.get().getId());
+		
+		artistRepository.save(artist);
+		albumRepository.save(album);
+	}
+	
 }

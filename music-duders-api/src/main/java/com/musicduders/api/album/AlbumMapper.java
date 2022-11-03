@@ -1,6 +1,12 @@
 package com.musicduders.api.album;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Component;
+
+import com.musicduders.api.artist.Artist;
+import com.musicduders.api.artist.ArtistResponse;
 
 @Component
 public class AlbumMapper {
@@ -35,6 +41,27 @@ public class AlbumMapper {
 		albumResponse.setArtistName(album.getArtist().getName());
 		
 		return albumResponse;
+	}
+
+	
+	/**
+	 * Converts an Album list to an AlbumResponse list.
+	 * 
+	 * @param albums
+	 * @return List<AlbumResponse>
+	 */
+	public List<AlbumResponse> toResponse(List<Album> albums) {
+		List<AlbumResponse> albumResponseList = new ArrayList<AlbumResponse>();
+		
+		for (int i = 0; i < albums.size(); i++) {
+			AlbumResponse albumResponse = new AlbumResponse();
+			albumResponse.setTitle(albums.get(i).getTitle());
+			albumResponse.setUrl(albums.get(i).getUrl());
+			albumResponse.setArtistName(albums.get(i).getArtist().getName());
+			albumResponseList.add(albumResponse);
+		}
+		
+		return albumResponseList;
 	}
 
 }

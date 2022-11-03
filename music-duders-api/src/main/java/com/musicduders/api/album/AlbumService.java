@@ -21,5 +21,9 @@ public class AlbumService {
 		Optional<Album> album = albumRepository.findById(id);
 		return album;
 	}
+	
+	public void deleteAlbum(String id) {
+		albumRepository.deleteById(id);
+	}
 
 }
