@@ -17,14 +17,19 @@ import com.musicduders.api.artist.Artist;
 @ExtendWith(MockitoExtension.class)
 public class AlbumServiceUnitTests {
 	
+	/**
+	 * AlbumRepository must be mocked since it is a dependency of AlbumService, and
+	 * these are unit tests.
+	 */
 	@Mock
 	private AlbumRepository albumRepository;
 	
+	// AlbumService is the class actually being tested here.
 	@InjectMocks
 	private AlbumService albumService;
 	
 	@Test
-	@DisplayName("Test the album service gets all albums if no exception occurs.")
+	@DisplayName("The album service gets all albums if no exception occurs.")
 	public void getAllAlbumsHappyFlow() {
 		Artist testArtistOne = new Artist();
 		testArtistOne.setName("The Weakerthans");
