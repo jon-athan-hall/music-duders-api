@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface ArtistRepository extends JpaRepository<Artist, String> {
 	
-	@Query("SELECT a from Artist a WHERE a.name = ?1")
+	@Query("SELECT a from Artist WHERE a.name = ?1")
 	Optional<Artist> findArtistByName(String name);
 
 }

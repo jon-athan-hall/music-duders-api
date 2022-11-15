@@ -20,10 +20,10 @@ import org.springframework.web.server.ResponseStatusException;
 public class ArtistController {
 	
 	@Autowired
-	ArtistService artistService;
+	private ArtistService artistService;
 	
 	@Autowired
-	ArtistMapper artistMapper;
+	private ArtistMapper artistMapper;
 	
 	@GetMapping
 	public List<ArtistResponse> getArtists() {
@@ -32,7 +32,7 @@ public class ArtistController {
 	}
 	
 	@GetMapping("/{id}")
-	public ArtistResponse getArtist(@PathVariable String id) {
+	public ArtistResponse getArtist(@PathVariable("id") String id) {
 		Optional<Artist> artist = artistService.getArtist(id);
 		return artistMapper.toResponse(artist.get());
 	}

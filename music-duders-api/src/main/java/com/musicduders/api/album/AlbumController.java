@@ -35,6 +35,7 @@ public class AlbumController {
 	}
 	
 	@GetMapping("/{id}")
+	//@PreAuthorize("hasRole('ROLE_ADMIN')") or hasAnyRole, hasAuthority, hasAnyAuthority
 	public AlbumResponse getAlbum(@PathVariable String id) {
 		Optional<Album> album = albumService.getAlbum(id);
 		return albumMapper.toResponse(album.get());
